@@ -22,16 +22,18 @@ Function.prototype.bind2 =function(context){
             var FN = function(){}
 			var fResult =function(){  
 				var bindArgs =Array.prototype.slice.call(arguments);
-				
 
+               
 		        return self.apply(this instanceof fResult ? this : context, args.concat(bindArgs)) 
 			}
+			console.log(fResult)
 			FN.prototype = this.prototype;
             fResult.prototype = new FN();
 			return fResult;
 }
 
 var bindFoo2 = bar.bind2('Derry');
+
 var obj2 = new bindFoo2('18');
 
 console.log(obj2.habit);
